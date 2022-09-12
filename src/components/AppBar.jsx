@@ -18,7 +18,10 @@ function AppBar() {
     <>
       <Navbar bg="dark" variant={'dark'} expand="lg">
         <Container fluid>
-          <Navbar.Brand href="/">PhoneBook</Navbar.Brand>
+          <Navbar.Brand>
+            <NavLink to="/">PhoneBook</NavLink>
+          </Navbar.Brand>
+
           <Navbar.Toggle aria-controls="navbarScroll" />
           <Navbar.Collapse id="navbarScroll">
             <Nav
@@ -26,18 +29,22 @@ function AppBar() {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              {/* <Nav.Link href="/">Home</Nav.Link> */}
-              <NavLink to="/">Home</NavLink>
-              {token ? (
-                <NavLink to="/contacts">Contacts</NavLink>
-              ) : (
-                // <Nav.Link href="contacts">Contacts</Nav.Link>
-                <>
-                  <NavLink to="/register">Register</NavLink>
-                  <NavLink to="/login">Login</NavLink>
+              <Nav.Link href="/">
+                <NavLink to="/">Home</NavLink>
+              </Nav.Link>
 
-                  {/* <Nav.Link href="register">Register</Nav.Link> */}
-                  {/* <Nav.Link href="login">Login</Nav.Link> */}
+              {token ? (
+                <Nav.Link href="contacts">
+                  <NavLink to="/contacts">Contacts</NavLink>
+                </Nav.Link>
+              ) : (
+                <>
+                  <Nav.Link href="register">
+                    <NavLink to="/register">Register</NavLink>
+                  </Nav.Link>
+                  <Nav.Link href="login">
+                    <NavLink to="/login">Login</NavLink>
+                  </Nav.Link>
                 </>
               )}
             </Nav>
