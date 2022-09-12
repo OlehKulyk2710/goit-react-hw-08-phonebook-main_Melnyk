@@ -4,6 +4,7 @@ import { Outlet } from 'react-router-dom';
 import { useLogOutUserMutation } from 'redux/auth/userApi';
 import Badge from 'react-bootstrap/Badge';
 import { FaRegUser } from 'react-icons/fa';
+import { NavLink } from 'react-router-dom';
 
 function AppBar() {
   const { name } = useSelector(state => state.user);
@@ -25,13 +26,18 @@ function AppBar() {
               style={{ maxHeight: '100px' }}
               navbarScroll
             >
-              <Nav.Link href="/">Home</Nav.Link>
+              {/* <Nav.Link href="/">Home</Nav.Link> */}
+              <NavLink to="/">Home</NavLink>
               {token ? (
-                <Nav.Link href="contacts">Contacts</Nav.Link>
+                <NavLink to="/contacts">Contacts</NavLink>
               ) : (
+                // <Nav.Link href="contacts">Contacts</Nav.Link>
                 <>
-                  <Nav.Link href="register">Register</Nav.Link>
-                  <Nav.Link href="login">Login</Nav.Link>
+                  <NavLink to="/register">Register</NavLink>
+                  <NavLink to="/login">Login</NavLink>
+
+                  {/* <Nav.Link href="register">Register</Nav.Link> */}
+                  {/* <Nav.Link href="login">Login</Nav.Link> */}
                 </>
               )}
             </Nav>

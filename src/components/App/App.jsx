@@ -5,6 +5,7 @@ import { lazy, Suspense } from 'react';
 import { useSelector } from 'react-redux';
 import { Route, Routes } from 'react-router-dom';
 import { useCurrentUserQuery } from '../../redux/auth/userApi';
+import { NotFound } from 'components/NotFound/NotFound';
 
 const AppBar = lazy(() => import('../AppBar' /* webpackChunkName: "AppBar" */));
 const HomeView = lazy(() =>
@@ -29,14 +30,7 @@ export default function App() {
     <Suspense fallback={<p>Loading ...</p>}>
       <Routes>
         <Route path="/" element={<AppBar />}>
-          <Route
-            index
-            element={
-              <PublicRoute>
-                <HomeView />
-              </PublicRoute>
-            }
-          />
+          <Route index element={<HomeView />} />
           <Route
             path="register"
             element={
@@ -61,7 +55,7 @@ export default function App() {
               </PrivateRoute>
             }
           />
-          <Route path="*" element={<HomeView />} />
+          <Route path="*" element={<NotFound />} />
         </Route>
       </Routes>
     </Suspense>
